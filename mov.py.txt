@@ -1,0 +1,44 @@
+import sqlite3
+
+conn = sqlite3.connect('movie.db')
+"""
+conn.execute('''CREATE TABLE MOVIE
+         (ID INT PRIMARY KEY     NOT NULL,
+         Movie_name           TEXT    NOT NULL,
+         Lead_actor            TEXT     NOT NULL,
+         Lead_actress        TEXT       NOT NULL,
+         Year_of_release        INT     NOT NULL,
+         Director_name      TEXT        NOT NULL);''')
+
+conn.execute("INSERT INTO MOVIE (ID,Movie_name,Lead_actor,Lead_actress,Year_of_release,Director_name) \
+      VALUES (1, 'Doctor Strange in the Multiverse of Madness', 'Benendict Cumberbatch', 'Elizabeth Olsen', 2022, 'Sam Raimi')");
+
+conn.execute("INSERT INTO MOVIE (ID,Movie_name,Lead_actor,Lead_actress,Year_of_release,Director_name) \
+      VALUES (2, 'Dune', 'Timothee Chalamet', 'Rebecca Ferguson', 2021, 'Denis Villeneuve')");
+
+conn.execute("INSERT INTO MOVIE (ID,Movie_name,Lead_actor,Lead_actress,Year_of_release,Director_name) \
+      VALUES (3, 'High-Rise', 'Tom Hiddleston', 'Sienna Miller', 2015, 'Ben Wheatley')");
+
+conn.commit()
+conn.close()
+"""
+
+
+print(" 1. Doctor Strange in the Multiverse of Madness \n 2. Dune \n 3. High-Rise")
+choice = int(input("Enter your choice: "))
+
+val = conn.execute("SELECT * from MOVIE WHERE ID is "+str(choice))
+for v in val:
+    a1 = v[0]
+    a2= v[1]
+    a3= v[2]
+    a4= v[3]
+    a5= v[4]
+    a6= v[5]
+print("Movie ID      : ",a1)
+print("Movie Name    : ",a2)
+print("Lead Actor    : ",a3)
+print("Lead Actress  : ",a4)
+print("Released Year : ",a5)
+print("Director      : ",a6)
+            
